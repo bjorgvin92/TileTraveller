@@ -8,7 +8,7 @@
 
 s = ["","You can travel: (E)ast or (S)outh.", "You can travel: (E)ast or (W)est.", "You can travel:  (S)outh or (W)est.", "You can travel: (N)orth or (E)ast or (S)outh.", "You can travel: (S)outh or (W)est.", "You can travel: (N)orth or (S)outh.", "You can travel: (N)orth.", "You can travel: (N)orth."]
 location = 7
-c = ["", "ES", "EW", "WS", "NS", "WS", "NS", "N", "N"]
+c = ["", "ES", "EW", "WS", "NSE", "WS", "NS", "N", "N"]
 
 while location < 9:
     print(s[location])    
@@ -31,6 +31,7 @@ while location < 9:
         if i+1 == len(c[location]):
             print("Not a valid direction!")
 print("Victory!")
+
 
     
         
