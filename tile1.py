@@ -10,14 +10,24 @@ s = ["","You can travel: (E)ast or (S)outh.", "You can travel: (E)ast or (W)est.
 location = 7
 c = ["", "ES", "EW", "WS", "NS", "WS", "NS", "N", "N"]
 command = str(input("Direction: "))
-for i, item in enumerate(c[location]):
-    if command == item:
-        if command == 'W':
-            location = location - 1
-        if command == 'E':
-            location = location + 1
-        if command == 'N':
-            location = location - 3
-        if command == 'S':
-            location = location + 3
+while location < 9:
+    for i, item in enumerate(c[location]):
+        if command == item:
+            if command == 'W':
+                location = location - 1
+                break
+            if command == 'E':
+                location = location + 1
+                break
+            if command == 'N':
+                location = location - 3
+                break
+            if command == 'S':
+                location = location + 3
+                break
+        if i == 8:
+            print("Not a valid direction!")
+print("Victory!")
+
+    
         
