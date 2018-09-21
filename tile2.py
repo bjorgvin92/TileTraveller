@@ -6,11 +6,31 @@
 #+3 er upp -3 er niður +1 er hægri -1 er vinstri.
 #ef location = 9. þá er leikurinn búinn
 
+def valid_answer(command): #fall sem sleppur ekki svari í gegn sem er ekki gilt.
+    while True:
+        for i, item in enumerate(c[location]):
+                if command == item:
+                    return command
+                        
+                if i+1 == len(c[location]):
+                    print("Not a valid direction!")
+        command = str(input("Direction: "))
+        command = command.upper()
+
+
+
+
 s = ["","(E)ast or (S)outh.", "(E)ast or (W)est.", "(S)outh or (W)est.", "(N)orth or (E)ast or (S)outh.", "(S)outh or (W)est.", "(N)orth or (S)outh.", "(N)orth.", "(N)orth."]
 #^ leiðbeiningar hvers reit, bætti við tómu staki í byrjun svo ég þurfi ekki að pæla eins mikið í hvað á við hvaða reit
 location = 7  #byrjunarreitur
 c = ["", "ES", "EW", "WS", "NSE", "WS", "NS", "N", "N"]
 #^ Leyfileg skref hvers reits, sama fyrirkomulag og í instruction strengnum.
+
+
+
+
+
+
 
 while location < 9:  #sleppur úr loopuni þegar þú nærð reit 9 = WIN
     print("You can travel: "+s[location]) #prentar út leiðbeiningar reitsins sem þú ert staddur í   
