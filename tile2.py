@@ -45,33 +45,13 @@ c = ["", "ES", "EW", "WS", "NSE", "WS", "NS", "N", "N"]
 
 
 
-while location < 9:  #sleppur úr loopuni þegar þú nærð reit 9 = WIN
-    print("You can travel: "+s[location]) #prentar út leiðbeiningar reitsins sem þú ert staddur í   
-    svar = True
-    while svar: #loopa sem hættir ekki fyrr en gilt svar er gefið
-        command = str(input("Direction: "))
-        command = command.upper() #til að hafa bara gera ráð fyrir uppercase
-        for i, item in enumerate(c[location]): #rullar yfir þá stafi í stakinu í fylkinu númer reitsins sem þu ert staðsettur
-            if command == item:
-                if command == 'W':
-                    location = location - 1  # -1 = vinstri
-                    svar = False
-                    break
-                if command == 'E':
-                    location = location + 1 # +1 = hægri
-                    svar = False                   
-                    break
-                if command == 'N':
-                    location = location - 3 #-3 er upp
-                    svar = False
-                    break
-                if command == 'S':
-                    location = location + 3 #+3 er niður
-                    svar = False
-                    break
-            if i+1 == len(c[location]):   #þetta er loka keyrsla loopunar. Ef ekkert skilyrði er mætt þá er inputtið rangt.
-                print("Not a valid direction!")
-print("Victory!") #Þú slapst úr loopuni = WIN
+while location < 9: #hættir þegar loka reit er náð(nr9)
+    print("You can travel: "+s[location])   #leiðbeiningar um mögulega leiðir tengd þeim reit sem þú ert á
+    command = str(input("Direction: ")) #input
+    command = command.upper() #breytir inputti i uppercase
+    command = valid_answer(command) #sér til þess að svarið er gilt sem gefið var ef ekki þá krefst það annað svar.
+    location = relocate(command, location) #breyir um staðsetningu
+print("Victory!") #tilkynning um að þú vannst
 
 #https://github.com/bjorgvin92/TileTraveller
     
