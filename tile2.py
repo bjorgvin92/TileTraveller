@@ -17,6 +17,19 @@ def valid_answer(command): #fall sem sleppur ekki svari í gegn sem er ekki gilt
         command = str(input("Direction: "))
         command = command.upper()
 
+def relocate(command, location): #fall sem breytir um stöðu location eftir inntaki
+    if command == 'N':
+        location = location - 3
+        return location
+    if command == 'S':
+        location = location + 3
+        return location
+    if command == 'W':
+        location = location - 1
+        return location
+    if command == 'E':
+        location = location + 1
+        return location
 
 
 
