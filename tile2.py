@@ -47,20 +47,24 @@ def relocate(command, location): #fall sem breytir um stöðu location eftir inn
         location = location + 1
         return location
 
+def play(location, coins, s, c):
+    while location < 9: #hættir þegar loka reit er náð(nr9)
+        print("You can travel: "+s[location])   #leiðbeiningar um mögulega leiðir tengd þeim reit sem þú ert á
+        command = str(input("Direction: ")) #input
+        command = command.upper() #breytir inputti i uppercase
+        command = valid_answer(command) #sér til þess að svarið er gilt sem gefið var ef ekki þá krefst það annað svar.
+        location = relocate(command, location) #breyir um staðsetningu
+        coins = lever(location, coins)
+    print("Victory!") #tilkynning um að þú vannst
+
 s = ["","(E)ast or (S)outh.", "(E)ast or (W)est.", "(S)outh or (W)est.", "(N)orth or (E)ast or (S)outh.", "(S)outh or (W)est.", "(N)orth or (S)outh.", "(N)orth.", "(N)orth."]
 #^ leiðbeiningar hvers reit, bætti við tómu staki í byrjun svo ég þurfi ekki að pæla eins mikið í hvað á við hvaða reit
-location = 7  #byrjunarreitur
 c = ["", "ES", "EW", "WS", "NSE", "WS", "NS", "N", "N"]
 #^ Leyfileg skref hvers reits, sama fyrirkomulag og í instruction strengnum.
-coins = 0
-
-while location < 9: #hættir þegar loka reit er náð(nr9)
-    print("You can travel: "+s[location])   #leiðbeiningar um mögulega leiðir tengd þeim reit sem þú ert á
-    command = str(input("Direction: ")) #input
-    command = command.upper() #breytir inputti i uppercase
-    command = valid_answer(command) #sér til þess að svarið er gilt sem gefið var ef ekki þá krefst það annað svar.
-    location = relocate(command, location) #breyir um staðsetningu
-    coins = lever(location, coins)
-print("Victory!") #tilkynning um að þú vannst
-    
-        
+answer = 'y'
+while answer in ('y', 'Y'):
+    location = 7  #byrjunarreitur
+    coins = 0
+    play(location,coins,s,c)
+    answer = input("Play again (y/n): ")
+            
