@@ -7,6 +7,21 @@
 #ef location = 9. þá er leikurinn búinn
 #https://github.com/bjorgvin92/TileTraveller
 
+def lever(location, coins):
+    lever_locations = [2,4,5,6]
+    if location in lever_locations:
+        while True:
+            lever_decision = input("Pull a lever (y/n): ")
+            lever_decision = lever_decision.upper()
+            if lever_decision == 'Y':
+                coins = coins + 1
+                print(f'You received 1 coins, your total is now {coins}.')
+                return coins
+            elif lever_decision == 'N':
+                return coins
+    return coins
+
+
 def valid_answer(command): #fall sem sleppur ekki svari í gegn sem er ekki gilt.
     while True:
         for i, item in enumerate(c[location]):
@@ -37,6 +52,7 @@ s = ["","(E)ast or (S)outh.", "(E)ast or (W)est.", "(S)outh or (W)est.", "(N)ort
 location = 7  #byrjunarreitur
 c = ["", "ES", "EW", "WS", "NSE", "WS", "NS", "N", "N"]
 #^ Leyfileg skref hvers reits, sama fyrirkomulag og í instruction strengnum.
+coins = 0
 
 while location < 9: #hættir þegar loka reit er náð(nr9)
     print("You can travel: "+s[location])   #leiðbeiningar um mögulega leiðir tengd þeim reit sem þú ert á
@@ -44,6 +60,7 @@ while location < 9: #hættir þegar loka reit er náð(nr9)
     command = command.upper() #breytir inputti i uppercase
     command = valid_answer(command) #sér til þess að svarið er gilt sem gefið var ef ekki þá krefst það annað svar.
     location = relocate(command, location) #breyir um staðsetningu
+    coins = lever(location, coins)
 print("Victory!") #tilkynning um að þú vannst
     
         
